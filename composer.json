@@ -1,0 +1,13 @@
+{
+    "name": "socialconnect/vk-api-client",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Patsura",
+            "email": "talk@dmtry.me"
+        }
+    ],
+    "require": {
+
+    }
+}
