@@ -81,7 +81,7 @@ class Client
 
         if ($result) {
             $result = $result[0];
-            
+
             $user = new Entity\User();
             $user->id = $result->uid;
             $user->firstname = $result->first_name;
@@ -103,16 +103,21 @@ class Client
             'uids' => $ids
         ));
 
-        $result = array();
-        foreach ($apiResult as $row) {
-            $user = new Entity\User();
-            $user->id = $row->uid;
-            $user->firstname = $row->first_name;
-            $user->lastname = $row->last_name;
+        if ($apiResult && is_array($apiResult)) {
+            $result = array();
 
-            $result[] = $user;
+            foreach ($apiResult as $row) {
+                $user = new Entity\User();
+                $user->id = $row->uid;
+                $user->firstname = $row->first_name;
+                $user->lastname = $row->last_name;
+
+                $result[] = $user;
+            }
+
+            return $result;
         }
 
-        return $result;
+        return false;
     }
 }
