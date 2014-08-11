@@ -48,6 +48,8 @@ class Client
      */
     public function request($uri, array $parameters = array())
     {
+        $parameters = array_merge($this->baseParameters, $parameters);
+
         $request = $this->httpClient->get($uri.'?'.http_build_query($parameters));
         $response = $request->send();
 
@@ -83,7 +85,7 @@ class Client
             $result = $result[0];
 
             $user = new Entity\User();
-            $user->id = $result->uid;
+            $user->id = $result->id;
             $user->firstname = $result->first_name;
             $user->lastname = $result->last_name;
 
@@ -108,7 +110,7 @@ class Client
 
             foreach ($apiResult as $row) {
                 $user = new Entity\User();
-                $user->id = $row->uid;
+                $user->id = $row->id;
                 $user->firstname = $row->first_name;
                 $user->lastname = $row->last_name;
 
