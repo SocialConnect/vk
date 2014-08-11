@@ -8,7 +8,8 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "~3.8"
+        "guzzlehttp/guzzle": "~3.8",
+        "socialconnect/common": "dev-master"
     },
     "autoload": {
         "psr-4": {
