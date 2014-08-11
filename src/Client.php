@@ -80,6 +80,8 @@ class Client
         ));
 
         if ($result) {
+            $result = $result[0];
+            
             $user = new Entity\User();
             $user->id = $result->uid;
             $user->firstname = $result->first_name;
