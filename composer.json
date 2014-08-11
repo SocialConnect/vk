@@ -9,5 +9,10 @@
     ],
     "require": {
         "guzzlehttp/guzzle": "~3.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "SocialConnect\\Vk\\": "src/"
+        }
     }
 }
