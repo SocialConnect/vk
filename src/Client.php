@@ -61,7 +61,7 @@ class Client
                 $json = json_decode($body);
 
                 if ($json->response) {
-                    return $json->response[0];
+                    return $json->response;
                 }
             }
         }
@@ -89,5 +89,28 @@ class Client
         }
 
         return false;
+    }
+
+    public function getUsers(array $ids)
+    {
+        if (count($ids) == 0) {
+            return false;
+        }
+
+        $apiResult = $this->request('method/getProfiles', array(
+            'uids' => $ids
+        ));
+
+        $result = array();
+        foreach ($apiResult as $row) {
+            $user = new Entity\User();
+            $user->id = $row->uid;
+            $user->firstname = $row->first_name;
+            $user->lastname = $row->last_name;
+
+            $result[] = $user;
+        }
+
+        return $result;
     }
 }
