@@ -36,15 +36,16 @@ class Client
         $this->appId = $appId;
         $this->appSecret = $appSecret;
 
-
-
         $this->httpClient = new \Guzzle\Http\Client('https://api.vk.com/');
     }
 
     /**
+     * Request social server api
+     *
      * @param $uri
      * @param array $parameters
      * @return bool
+     * @throws Exception
      */
     public function request($uri, array $parameters = array())
     {
@@ -55,7 +56,7 @@ class Client
 
         if ($response) {
             if ($response->isServerError()) {
-
+                throw new Exception('Server error');
             }
 
             $body = $response->getBody(true);
@@ -64,7 +65,11 @@ class Client
 
                 if ($json->response) {
                     return $json->response;
+                } else {
+                    throw new Exception('Error 1');
                 }
+            } else {
+                throw new Exception('Error 2');
             }
         }
 
