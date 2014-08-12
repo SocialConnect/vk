@@ -8,3 +8,9 @@ php:
 
 install:
  - composer --prefer-dist install
+ 
+before_script:
+ - mkdir -p build/coverage
+
+script:
+ - phpunit --coverage-clover=coverage.clover

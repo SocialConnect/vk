@@ -11,6 +11,9 @@
         "guzzlehttp/guzzle": "~3.8",
         "socialconnect/common": "dev-master"
     },
+    "require-dev": {
+        "satooshi/php-coveralls": "0.6.1"
+    },
     "autoload": {
         "psr-4": {
             "SocialConnect\\Vk\\": "src/"
