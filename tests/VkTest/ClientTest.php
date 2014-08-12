@@ -4,6 +4,8 @@
  * @author: Patsura Dmitry @ovr <talk@dmtry.me>
  */
 
+namespace VkTest;
+
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
     public function getClient()
@@ -13,7 +15,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testGetUserSuccess()
     {
-        $client = $this->getClient();
+        $client = new \SocialConnect\Vk\Client(4500322, 'applicationsecret');
         $result = $client->getUser(103061163);
 
         $this->assertInstanceOf('SocialConnect\Vk\Entity\User', $result);
@@ -21,5 +23,13 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('int', $result->id);
         $this->assertInternalType('string', $result->firstname);
         $this->assertInternalType('string', $result->lastname);
+    }
+
+    public function testGetUserWrongId()
+    {
+        $this->setExpectedException('SocialConnect\Vk\Exception', 'Invalid user id');
+        
+        $client = new \SocialConnect\Vk\Client(4500322, 'applicationsecret');
+        $result = $client->getUser(-1);
     }
 }
