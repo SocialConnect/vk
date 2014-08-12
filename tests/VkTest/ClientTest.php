@@ -10,4 +10,16 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         return new \SocialConnect\Vk\Client(4500322, 'applicationsecret');
     }
+
+    public function testGetUserSuccess()
+    {
+        $client = $this->getClient();
+        $result = $client->getUser(103061163);
+
+        $this->assertInstanceOf('SocialConnect\Vk\Entity\User', $result);
+
+        $this->assertInternalType('int', $result->id);
+        $this->assertInternalType('string', $result->firstname);
+        $this->assertInternalType('string', $result->lastname);
+    }
 }
