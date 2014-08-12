@@ -112,6 +112,8 @@ class Client
     }
 
     /**
+     * @link http://vk.com/dev/users.get
+     *
      * @param $id
      * @return bool
      */
@@ -131,6 +133,8 @@ class Client
     }
 
     /**
+     * @link http://vk.com/dev/users.get
+     *
      * @param array $ids
      * @return array|bool
      * @throws Exception
@@ -149,6 +153,8 @@ class Client
     }
 
     /**
+     * @link http://vk.com/dev/friends.get
+     *
      * @param null $id
      * @return array|bool
      * @throws Exception
