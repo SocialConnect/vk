@@ -140,6 +140,19 @@ class Client
             'uids' => $ids
         ));
 
+        return $this->hydrateUsersCollection($apiResult);
+    }
+
+    /**
+     * @param null $id
+     */
+    public function getFriends($id = null)
+    {
+
+    }
+
+    protected function hydrateUsersCollection($apiResult)
+    {
         if ($apiResult && is_array($apiResult)) {
             $result = array();
 
