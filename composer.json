@@ -12,7 +12,8 @@
         "socialconnect/common": "dev-master"
     },
     "require-dev": {
-        "satooshi/php-coveralls": "0.6.1"
+        "satooshi/php-coveralls": "dev-master",
+        "phpunit/phpunit": "~4.0"
     },
     "autoload": {
         "psr-4": {

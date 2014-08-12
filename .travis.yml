@@ -13,7 +13,7 @@ before_script:
  - mkdir -p build/coverage
 
 script:
- - phpunit
+ - phpunit --coverage-clover ./build/logs/clover.xml
 
 after_script:
  - vendor/bin/coveralls -v --exclude-no-stmt
