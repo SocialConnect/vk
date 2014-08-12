@@ -145,10 +145,16 @@ class Client
 
     /**
      * @param null $id
+     * @return array|bool
+     * @throws Exception
      */
     public function getFriends($id = null)
     {
+        $apiResult = $this->request('method/getProfiles', array(
+            'user_id' => $id
+        ));
 
+        return $this->hydrateUsersCollection($apiResult);
     }
 
     protected function hydrateUsersCollection($apiResult)
