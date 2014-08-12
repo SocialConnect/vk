@@ -35,6 +35,11 @@ class Client
     );
 
     /**
+     * @var string
+     */
+    protected $accessToken;
+
+    /**
      * @param string|integer $appId
      * @param string $appSecret
      */
@@ -170,5 +175,21 @@ class Client
         }
 
         return false;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccessToken()
+    {
+        return $this->accessToken;
+    }
+
+    /**
+     * @param string $accessToken
+     */
+    public function setAccessToken($accessToken)
+    {
+        $this->accessToken = $accessToken;
     }
 }
