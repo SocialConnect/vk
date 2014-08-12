@@ -202,4 +202,32 @@ class Client
     {
         $this->accessToken = $accessToken;
     }
+
+    /**
+     * @param integer|string $groupId
+     * @param integer|string $id
+     * @return bool
+     * @throws Exception
+     */
+    public function isGroupMember($groupId, $id)
+    {
+        return boolval($this->request('method/groups.isMember', array(
+            'group_id' => $groupId,
+            'user_id' => $id
+        )));
+    }
+
+    /**
+     * @param integer|string $groupId
+     * @param array $ids
+     * @return bool
+     * @throws Exception
+     */
+    public function isGroupMembers($groupId, array $ids)
+    {
+        return boolval($this->request('method/groups.isMember', array(
+            'group_id' => $groupId,
+            'user_ids' => $ids
+        )));
+    }
 }
