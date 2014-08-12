@@ -27,10 +27,17 @@ class Client
      */
     protected $httpClient;
 
+    /**
+     * @var array
+     */
     protected $baseParameters = array(
         'v' => 5.24
     );
 
+    /**
+     * @param string|integer $appId
+     * @param string $appSecret
+     */
     public function __construct($appId, $appSecret)
     {
         $this->appId = $appId;
@@ -78,8 +85,14 @@ class Client
         return false;
     }
 
+    /**
+     * @var \SocialConnect\Common\Hydrator\ObjectMap|null
+     */
     protected $hydrator;
 
+    /**
+     * @return \SocialConnect\Common\Hydrator\ObjectMap
+     */
     public function getHydrator()
     {
         if (!$this->hydrator) {
@@ -112,6 +125,11 @@ class Client
         return false;
     }
 
+    /**
+     * @param array $ids
+     * @return array|bool
+     * @throws Exception
+     */
     public function getUsers(array $ids)
     {
         if (count($ids) == 0) {
