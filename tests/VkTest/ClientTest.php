@@ -15,7 +15,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testGetUserSuccess()
     {
-        $client = new \SocialConnect\Vk\Client(4500322, 'applicationsecret');
+        $client = $this->getClient();
         $result = $client->getUser(103061163);
 
         $this->assertInstanceOf('SocialConnect\Vk\Entity\User', $result);
@@ -28,8 +28,8 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testGetUserWrongId()
     {
         $this->setExpectedException('SocialConnect\Vk\Exception', 'Invalid user id');
-        
-        $client = new \SocialConnect\Vk\Client(4500322, 'applicationsecret');
+
+        $client = $this->getClient();
         $result = $client->getUser(-1);
     }
 }
