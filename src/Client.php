@@ -63,7 +63,7 @@ class Client
             if ($body) {
                 $json = json_decode($body);
 
-                if ($json->response) {
+                if (isset($json->response)) {
                     return $json->response;
                 } else {
                     throw new Exception('Error 1');
