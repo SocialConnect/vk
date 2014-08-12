@@ -14,3 +14,6 @@ before_script:
 
 script:
  - phpunit
+
+after_script:
+ - vendor/bin/coveralls -v --exclude-no-stmt
