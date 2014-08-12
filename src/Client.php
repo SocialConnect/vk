@@ -168,6 +168,10 @@ class Client
         return $this->hydrateUsersCollection($apiResult);
     }
 
+    /**
+     * @param $apiResult
+     * @return array|bool
+     */
     protected function hydrateUsersCollection($apiResult)
     {
         if ($apiResult && is_array($apiResult)) {
