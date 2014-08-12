@@ -66,7 +66,9 @@ class Client
                 if (isset($json->response)) {
                     return $json->response;
                 } else {
-                    throw new Exception('Error 1');
+                    if (isset($json->error)) {
+                        throw new Exception($json->error->error_msg, $json->error->error_code);
+                    }
                 }
             } else {
                 throw new Exception('Error 2');
