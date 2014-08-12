@@ -76,6 +76,21 @@ class Client
         return false;
     }
 
+    protected $hydrator;
+
+    public function getHydrator()
+    {
+        if (!$this->hydrator) {
+            return $this->hydrator = new \SocialConnect\Common\Hydrator\ObjectMap(array(
+                'id' => 'id',
+                'first_name' => 'firstname',
+                'last_name' => 'lastname'
+            ));
+        }
+
+        return $this->hydrator;
+    }
+
     /**
      * @param $id
      * @return bool
@@ -89,12 +104,7 @@ class Client
         if ($result) {
             $result = $result[0];
 
-            $user = new Entity\User();
-            $user->id = $result->id;
-            $user->firstname = $result->first_name;
-            $user->lastname = $result->last_name;
-
-            return $user;
+            return $this->getHydrator()->hydrate(new Entity\User(), $result);
         }
 
         return false;
@@ -114,12 +124,7 @@ class Client
             $result = array();
 
             foreach ($apiResult as $row) {
-                $user = new Entity\User();
-                $user->id = $row->id;
-                $user->firstname = $row->first_name;
-                $user->lastname = $row->last_name;
-
-                $result[] = $user;
+                $result[] = $this->getHydrator()->hydrate(new Entity\User(), $result);
             }
 
             return $result;
