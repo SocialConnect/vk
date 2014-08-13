@@ -43,6 +43,19 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($client->isGroupMember(10639516, 103061163)); //MDK
     }
 
+    public function testIsGroupMembersSuccess()
+    {
+        $client = $this->getClient();
+
+        $result = $client->isGroupMembers(1, array(103061163, 1));
+        $this->assertEquals(0, $result[0]->member);
+        $this->assertEquals(1, $result[1]->member);
+
+        $result = $client->isGroupMembers(10639516, array(103061163, 1));
+        $this->assertEquals(0, $result[0]->member);
+        $this->assertEquals(0, $result[1]->member);
+    }
+
     public function testGetFriends()
     {
         $client = $this->getClient();

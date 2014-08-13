@@ -223,7 +223,7 @@ class Client
      */
     public function isGroupMembers($groupId, array $ids)
     {
-        return (boolean) $this->request('method/groups.isMember', array(
+        return $this->request('method/groups.isMember', array(
             'group_id' => $groupId,
             'user_ids' => $ids
         ));
