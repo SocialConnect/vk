@@ -87,7 +87,7 @@ class Client
 
         return $this->hydrator;
     }
-    
+
     /**
      * Request social server api
      *
@@ -209,10 +209,10 @@ class Client
      */
     public function isGroupMember($groupId, $id)
     {
-        return boolval($this->request('method/groups.isMember', array(
+        return (boolean) $this->request('method/groups.isMember', array(
             'group_id' => $groupId,
             'user_id' => $id
-        )));
+        ));
     }
 
     /**
@@ -223,9 +223,9 @@ class Client
      */
     public function isGroupMembers($groupId, array $ids)
     {
-        return boolval($this->request('method/groups.isMember', array(
+        return (boolean) $this->request('method/groups.isMember', array(
             'group_id' => $groupId,
             'user_ids' => $ids
-        )));
+        ));
     }
 }
