@@ -40,6 +40,22 @@ class Client
     protected $accessToken;
 
     /**
+     * @return string
+     */
+    public function getAccessToken()
+    {
+        return $this->accessToken;
+    }
+
+    /**
+     * @param string $accessToken
+     */
+    public function setAccessToken($accessToken)
+    {
+        $this->accessToken = $accessToken;
+    }
+
+    /**
      * @param string|integer $appId
      * @param string $appSecret
      */
@@ -51,6 +67,27 @@ class Client
         $this->httpClient = new \Guzzle\Http\Client('https://api.vk.com/');
     }
 
+    /**
+     * @var \SocialConnect\Common\Hydrator\ObjectMap|null
+     */
+    protected $hydrator;
+
+    /**
+     * @return \SocialConnect\Common\Hydrator\ObjectMap
+     */
+    public function getHydrator()
+    {
+        if (!$this->hydrator) {
+            return $this->hydrator = new \SocialConnect\Common\Hydrator\ObjectMap(array(
+                'id' => 'id',
+                'first_name' => 'firstname',
+                'last_name' => 'lastname'
+            ));
+        }
+
+        return $this->hydrator;
+    }
+    
     /**
      * Request social server api
      *
@@ -88,27 +125,6 @@ class Client
         }
 
         return false;
-    }
-
-    /**
-     * @var \SocialConnect\Common\Hydrator\ObjectMap|null
-     */
-    protected $hydrator;
-
-    /**
-     * @return \SocialConnect\Common\Hydrator\ObjectMap
-     */
-    public function getHydrator()
-    {
-        if (!$this->hydrator) {
-            return $this->hydrator = new \SocialConnect\Common\Hydrator\ObjectMap(array(
-                'id' => 'id',
-                'first_name' => 'firstname',
-                'last_name' => 'lastname'
-            ));
-        }
-
-        return $this->hydrator;
     }
 
     /**
@@ -183,22 +199,6 @@ class Client
         }
 
         return false;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAccessToken()
-    {
-        return $this->accessToken;
-    }
-
-    /**
-     * @param string $accessToken
-     */
-    public function setAccessToken($accessToken)
-    {
-        $this->accessToken = $accessToken;
     }
 
     /**
