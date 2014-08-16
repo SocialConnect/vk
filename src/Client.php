@@ -199,7 +199,7 @@ class Client
             $result = array();
 
             foreach ($apiResult as $row) {
-                $result[] = $hydrator->hydrate($instance, $result);
+                $result[] = $hydrator->hydrate($instance, $row);
             }
 
             return $result;
