@@ -226,7 +226,7 @@ class Client
             $result = array();
 
             foreach ($apiResult as $row) {
-                $result[] = $hydrator->hydrate($instance, $row);
+                $result[] = $hydrator->hydrate(clone $instance, $row);
             }
 
             return $result;
