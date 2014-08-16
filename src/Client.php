@@ -93,11 +93,16 @@ class Client
      *
      * @param $uri
      * @param array $parameters
+     * @param bool $accessToken
      * @return bool
      * @throws Exception
      */
-    public function request($uri, array $parameters = array())
+    public function request($uri, array $parameters = array(), $accessToken = false)
     {
+        if ($accessToken) {
+            $this->baseParameters['access_token'] = $this->accessToken;
+        }
+
         $parameters = array_merge($this->baseParameters, $parameters);
 
         $request = $this->httpClient->get($uri.'?'.http_build_query($parameters));
