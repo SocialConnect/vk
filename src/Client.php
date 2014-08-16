@@ -193,14 +193,15 @@ class Client
      * @link http://vk.com/dev/friends.get
      *
      * @param null $id
-     * @return array|bool
+     * @param array $fields
+     * @return bool|Response\Collection
      * @throws Exception
      */
-    public function getFriends($id = null)
+    public function getFriends($id = null, array $fields = array('first_name', 'last_name'))
     {
         $result = $this->request('method/friends.get', array(
             'user_id' => $id,
-            'fields' => array('first_name', 'last_name')
+            'fields' => $fields
         ));
 
         if ($result) {
