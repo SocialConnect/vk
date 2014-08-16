@@ -170,7 +170,7 @@ class Client
             'uids' => $ids
         ));
 
-        return $this->hydrateUsersCollection($apiResult);
+        return $this->hydrateCollection($apiResult, $this->getHydrator(), new Entity\User());
     }
 
     /**
@@ -189,15 +189,17 @@ class Client
 
     /**
      * @param $apiResult
+     * @param $hydrator
+     * @param $instance
      * @return array|bool
      */
-    protected function hydrateUsersCollection($apiResult)
+    protected function hydrateCollection($apiResult, $hydrator, $instance)
     {
         if ($apiResult && is_array($apiResult)) {
             $result = array();
 
             foreach ($apiResult as $row) {
-                $result[] = $this->getHydrator()->hydrate(new Entity\User(), $result);
+                $result[] = $hydrator->hydrate($instance, $result);
             }
 
             return $result;
