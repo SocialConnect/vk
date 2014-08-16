@@ -12,7 +12,7 @@ class Collection
 
     protected $loadCallback;
 
-    protected $elements = [];
+    protected $elements = array();
 
     public function __construct($elements, $total, $loadCallback)
     {
