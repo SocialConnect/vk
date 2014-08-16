@@ -64,4 +64,12 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $friends->items);
         $this->assertTrue(count($friends) > 0);
     }
+
+    public function testGetFriends()
+    {
+        $client = $this->getClient();
+
+        $friends = $client->getFriends(103061163);
+        $this->assertInstanceOf('SocialConnect\Vk\Response\Collection', $friends);
+    }
 }
