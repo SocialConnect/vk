@@ -8,6 +8,11 @@ namespace VkTest;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
+    public function getTestUserId()
+    {
+        return $GLOBALS['testUserId'];
+    }
+
     public function getClient()
     {
         $client = new \SocialConnect\Vk\Client($GLOBALS['applicationId'], $GLOBALS['applicationSecret']);
@@ -19,7 +24,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testGetUserSuccess()
     {
         $client = $this->getClient();
-        $result = $client->getUser(103061163);
+        $result = $client->getUser($this->getTestUserId());
 
         $this->assertInstanceOf('SocialConnect\Vk\Entity\User', $result);
 
@@ -41,20 +46,20 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $client = $this->getClient();
 
         $this->assertTrue($client->isGroupMember(1, 1));
-        $this->assertTrue($client->isGroupMember(45934290, 103061163));
+        $this->assertTrue($client->isGroupMember(45934290, $this->getTestUserId()));
 
-        $this->assertFalse($client->isGroupMember(10639516, 103061163)); //MDK
+        $this->assertFalse($client->isGroupMember(10639516, $this->getTestUserId())); //MDK
     }
 
     public function testIsGroupMembersSuccess()
     {
         $client = $this->getClient();
 
-        $result = $client->isGroupMembers(1, array(103061163, 1));
+        $result = $client->isGroupMembers(1, array($this->getTestUserId(), 1));
         $this->assertEquals(0, $result[0]->member);
         $this->assertEquals(1, $result[1]->member);
 
-        $result = $client->isGroupMembers(10639516, array(103061163, 1));
+        $result = $client->isGroupMembers(10639516, array($this->getTestUserId(), 1));
         $this->assertEquals(0, $result[0]->member);
         $this->assertEquals(0, $result[1]->member);
     }
@@ -63,7 +68,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $client = $this->getClient();
 
-        $friends = $client->getFriendsList(103061163);
+        $friends = $client->getFriendsList($this->getTestUserId());
         $this->assertInternalType('array', $friends->items);
         $this->assertTrue(count($friends) > 0);
     }
@@ -72,7 +77,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $client = $this->getClient();
 
-        $friends = $client->getFriends(103061163);
+        $friends = $client->getFriends($this->getTestUserId());
         $this->assertInstanceOf('SocialConnect\Vk\Response\Collection', $friends);
     }
 }
