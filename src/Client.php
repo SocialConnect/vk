@@ -81,7 +81,9 @@ class Client
             return $this->hydrator = new \SocialConnect\Common\Hydrator\ObjectMap(array(
                 'id' => 'id',
                 'first_name' => 'firstname',
-                'last_name' => 'lastname'
+                'last_name' => 'lastname',
+                'hidden' => 'hidden',
+                'deactivated' => 'deactivated'
             ));
         }
 
@@ -185,6 +187,31 @@ class Client
         return $this->request('method/friends.get', array(
             'user_id' => $id
         ));
+    }
+
+    /**
+     * @link http://vk.com/dev/friends.get
+     *
+     * @param null $id
+     * @return array|bool
+     * @throws Exception
+     */
+    public function getFriends($id = null)
+    {
+        $result = $this->request('method/friends.get', array(
+            'user_id' => $id,
+            'fields' => array('first_name', 'last_name')
+        ));
+
+        if ($result) {
+            return new Response\Collection(
+                $this->hydrateCollection($result->items, $this->getHydrator(), new Entity\User()),
+                $result->count,
+                function() {}
+            );
+        }
+
+        return false;
     }
 
     /**
