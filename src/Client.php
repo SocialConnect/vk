@@ -263,4 +263,22 @@ class Client
             'user_ids' => $ids
         ));
     }
+
+    /**
+     * @link http://vk.com/dev/status.get
+     *
+     * @param null $id
+     * @return bool
+     * @throws Exception
+     */
+    public function getStatus($id = null)
+    {
+        if ($id) {
+            return $this->request('method/status.get', array(
+                'user_id' => $id
+            ));
+        }
+
+        return $this->request('method/status.get', array(), true);
+    }
 }
