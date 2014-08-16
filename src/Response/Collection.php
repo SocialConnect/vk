@@ -6,7 +6,7 @@
 
 namespace SocialConnect\Vk\Response;
 
-class Collection
+class Collection implements \Countable
 {
     protected $total;
 
@@ -19,5 +19,10 @@ class Collection
         $this->elements = $elements;
         $this->total = $total;
         $this->loadCallback = $loadCallback;
+    }
+
+    public function count()
+    {
+        return $this->total;
     }
 }
