@@ -6,27 +6,8 @@
 
 namespace SocialConnect\Vk;
 
-class Client
+class Client extends \SocialConnect\Common\ClientAbstract
 {
-    /**
-     * Application secret
-     *
-     * @var string|integer
-     */
-    protected $appId;
-
-    /**
-     * Application secret
-     *
-     * @var string
-     */
-    protected $appSecret;
-
-    /**
-     * @var \Guzzle\Http\Client
-     */
-    protected $httpClient;
-
     /**
      * @var array
      */
@@ -35,16 +16,14 @@ class Client
     );
 
     /**
-     * @var string
+     * @param string|integer $appId
+     * @param string $appSecret
      */
-    protected $accessToken;
-
-    /**
-     * @return string
-     */
-    public function getAccessToken()
+    public function __construct($appId, $appSecret)
     {
-        return $this->accessToken;
+        parent::__construct($appId, $appSecret);
+
+        $this->httpClient = new \Guzzle\Http\Client('https://api.vk.com/');
     }
 
     /**
@@ -53,18 +32,6 @@ class Client
     public function setAccessToken($accessToken)
     {
         $this->accessToken = $accessToken;
-    }
-
-    /**
-     * @param string|integer $appId
-     * @param string $appSecret
-     */
-    public function __construct($appId, $appSecret)
-    {
-        $this->appId = $appId;
-        $this->appSecret = $appSecret;
-
-        $this->httpClient = new \Guzzle\Http\Client('https://api.vk.com/');
     }
 
     /**
