@@ -68,26 +68,21 @@ class Client
     }
 
     /**
-     * @var \SocialConnect\Common\Hydrator\ObjectMap|null
+     * @return \SocialConnect\Common\Hydrator\CloneObjectMap
      */
-    protected $hydrator;
-
-    /**
-     * @return \SocialConnect\Common\Hydrator\ObjectMap
-     */
-    public function getHydrator()
+    public function getHydrator($object)
     {
-        if (!$this->hydrator) {
-            return $this->hydrator = new \SocialConnect\Common\Hydrator\ObjectMap(array(
-                'id' => 'id',
-                'first_name' => 'firstname',
-                'last_name' => 'lastname',
-                'hidden' => 'hidden',
-                'deactivated' => 'deactivated'
-            ));
-        }
+        /**
+         * @todo Think more about cache hydrators in class property
+         */
 
-        return $this->hydrator;
+        return new \SocialConnect\Common\Hydrator\CloneObjectMap(array(
+            'id' => 'id',
+            'first_name' => 'firstname',
+            'last_name' => 'lastname',
+            'hidden' => 'hidden',
+            'deactivated' => 'deactivated'
+        ), $object);
     }
 
     /**
@@ -149,7 +144,7 @@ class Client
         if ($result) {
             $result = $result[0];
 
-            return $this->getHydrator()->hydrate(new Entity\User(), $result);
+            return $this->getHydrator(new Entity\User())->hydrate($result);
         }
 
         return false;
@@ -172,7 +167,7 @@ class Client
             'uids' => $ids
         ));
 
-        return $this->hydrateCollection($apiResult, $this->getHydrator(), new Entity\User());
+        return $this->hydrateCollection($apiResult, $this->getHydrator(new Entity\User()));
     }
 
     /**
@@ -206,7 +201,7 @@ class Client
 
         if ($result) {
             return new Response\Collection(
-                $this->hydrateCollection($result->items, $this->getHydrator(), new Entity\User()),
+                $this->hydrateCollection($result->items, $this->getHydrator(new Entity\User())),
                 $result->count,
                 function() {}
             );
@@ -218,16 +213,15 @@ class Client
     /**
      * @param $apiResult
      * @param $hydrator
-     * @param $instance
      * @return array|bool
      */
-    protected function hydrateCollection($apiResult, $hydrator, $instance)
+    protected function hydrateCollection($apiResult, $hydrator)
     {
         if ($apiResult && is_array($apiResult)) {
             $result = array();
 
             foreach ($apiResult as $row) {
-                $result[] = $hydrator->hydrate(clone $instance, $row);
+                $result[] = $hydrator->hydrate($row);
             }
 
             return $result;
