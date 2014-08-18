@@ -168,7 +168,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
 
         if ($result) {
             return new Response\Collection(
-                $this->hydrateCollection($result->items, $this->getHydrator(new Entity\User())),
+                $this->hydrateCollection($result->items, $this->getHydrator(new Entity\Friend())),
                 $result->count,
                 function() {}
             );
