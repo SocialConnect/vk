@@ -48,7 +48,17 @@ class Client extends \SocialConnect\Common\ClientAbstract
             'first_name' => 'firstname',
             'last_name' => 'lastname',
             'hidden' => 'hidden',
-            'deactivated' => 'deactivated'
+            'deactivated' => 'deactivated',
+            'owner_id' => 'ownerId',
+            //Audio
+            'artist' => 'artist',
+            'title' => 'title',
+            'duration' => 'duration',
+            'url' => 'url',
+            'genre_id' => 'genreId',
+            'lyrics_id' => 'lyricsId',
+            'no_search' => 'noSearch',
+            'album_id' => 'albumId'
         ), $object);
     }
 
@@ -241,5 +251,29 @@ class Client extends \SocialConnect\Common\ClientAbstract
         }
 
         return $this->request('method/status.get', array(), true);
+    }
+
+    /**
+     * @link http://vk.com/dev/audio.get
+     *
+     * @param $ownerId
+     * @return bool|Response\Collection
+     * @throws Exception
+     */
+    public function getAudio($ownerId)
+    {
+        $result = $this->request('method/audio.get', array(
+            'owner_id' => $ownerId
+        ), true);
+
+        if ($result) {
+            return new Response\Collection(
+                $this->hydrateCollection($result->items, $this->getHydrator(new Entity\Friend())),
+                $result->count,
+                function() {}
+            );
+        }
+
+        return false;
     }
 }
