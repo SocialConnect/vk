@@ -77,15 +77,15 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $client = $this->getClient();
 
-        $friends = $client->getFriends($this->getTestUserId());
-        $this->assertInstanceOf('SocialConnect\Vk\Response\Collection', $friends);
+        $result = $client->getFriends($this->getTestUserId());
+        $this->assertInstanceOf('SocialConnect\Vk\Response\Collection', $result);
     }
 
     public function testGetAudio()
     {
         $client = $this->getClient();
 
-        $friends = $client->getAudio($this->getTestUserId());
-        $this->assertInstanceOf('SocialConnect\Vk\Response\Collection', $friends);
+        $result = $client->getAudio($this->getTestUserId());
+        $this->assertInstanceOf('SocialConnect\Vk\Response\Collection', $result);
     }
 }
