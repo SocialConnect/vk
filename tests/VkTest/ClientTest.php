@@ -8,6 +8,8 @@ namespace VkTest;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
+    protected $skipAccessTokenTest = false;
+
     public function getTestUserId()
     {
         return $GLOBALS['testUserId'];
@@ -17,6 +19,10 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $client = new \SocialConnect\Vk\Client($GLOBALS['applicationId'], $GLOBALS['applicationSecret']);
         $client->setAccessToken($GLOBALS['testUserAccessToken']);
+
+        if (strlen($GLOBALS['testUserAccessToken']) < 10) {
+            $this->skipAccessTokenTest = true;
+        }
 
         return $client;
     }
@@ -84,6 +90,10 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testGetAudio()
     {
         $client = $this->getClient();
+
+        if ($this->skipAccessTokenTest) {
+            $this->markTestSkipped('Need AccessToken');
+        }
 
         $result = $client->getAudio($this->getTestUserId());
         $this->assertInstanceOf('SocialConnect\Vk\Response\Collection', $result);
