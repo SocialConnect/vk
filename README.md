@@ -1,10 +1,10 @@
 ВКонтакте SDK
 =============
-[![Latest Stable Version](https://poser.pugx.org/SocialConnect/vk-api-client/v/stable.svg)](https://packagist.org/packages/SocialConnect/vk-api-client)
-[![Build Status](https://travis-ci.org/SocialConnect/vk-api-client.svg?branch=master)](https://travis-ci.org/SocialConnect/vk-api-client)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/SocialConnect/vk-api-client/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/SocialConnect/vk-api-client/?branch=master)
-[![Coverage Status](https://img.shields.io/coveralls/SocialConnect/vk-api-client.svg)](https://coveralls.io/r/SocialConnect/vk-api-client?branch=master)
-[![License](https://poser.pugx.org/SocialConnect/vk-api-client/license.svg)](https://packagist.org/packages/SocialConnect/vk-api-client)
+[![Latest Stable Version](https://poser.pugx.org/SocialConnect/vk-sdk/v/stable.svg)](https://packagist.org/packages/SocialConnect/vk-sdk)
+[![Build Status](https://travis-ci.org/SocialConnect/vk-sdk.svg?branch=master)](https://travis-ci.org/SocialConnect/vk-sdk)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/SocialConnect/vk-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/SocialConnect/vk-sdk/?branch=master)
+[![Coverage Status](https://img.shields.io/coveralls/SocialConnect/vk-sdk.svg)](https://coveralls.io/r/SocialConnect/vk-sdk?branch=master)
+[![License](https://poser.pugx.org/SocialConnect/vk-sdk/license.svg)](https://packagist.org/packages/SocialConnect/vk-sdk)
 
 Library for work with VK API.
 
@@ -16,7 +16,7 @@ Add requirement to your `composer.json`:
 ```json
 {
     "require": {
-        "socialconnect/vk-api-client": "dev-master"
+        "socialconnect/vk-sdk": "dev-master"
     }
 }
 ```
