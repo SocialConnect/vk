@@ -7,7 +7,7 @@
 namespace SocialConnect\Vk\Entity;
 
 /**
- * Class User
+ * Class Friend
  * @package SocialConnect\Vk\Entity
  */
 class Friend extends User
