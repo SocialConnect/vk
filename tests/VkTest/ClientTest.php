@@ -17,7 +17,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function getClient()
     {
-        $client = new \SocialConnect\Vk\Client($GLOBALS['applicationId'], $GLOBALS['applicationSecret']);
+        $client = new \SocialConnect\Vk\Client(intval($GLOBALS['applicationId']), $GLOBALS['applicationSecret']);
         $client->setAccessToken($GLOBALS['testUserAccessToken']);
 
         if (strlen($GLOBALS['testUserAccessToken']) < 10) {
