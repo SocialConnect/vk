@@ -11,7 +11,7 @@
         "php": "~5.3",
         "ext-json": "*",
         "guzzlehttp/guzzle": "~3.8",
-        "socialconnect/common": "dev-master"
+        "socialconnect/common": "*@dev"
     },
     "require-dev": {
         "satooshi/php-coveralls": "dev-master",
