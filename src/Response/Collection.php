@@ -47,4 +47,44 @@ class Collection implements \Countable
     {
         return $this->elements;
     }
+
+    /**
+     * @return mixed
+     */
+    public function first()
+    {
+        return reset($this->elements);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function last()
+    {
+        return end($this->elements);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function key()
+    {
+        return key($this->elements);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function next()
+    {
+        return next($this->elements);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function current()
+    {
+        return current($this->elements);
+    }
 }
