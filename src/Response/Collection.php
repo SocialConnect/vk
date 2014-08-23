@@ -21,11 +21,11 @@ class Collection implements \Countable
     protected $elements = array();
 
     /**
-     * @param $elements
+     * @param array $elements
      * @param $total
      * @param $loadCallback
      */
-    public function __construct($elements, $total, $loadCallback)
+    public function __construct(array $elements = array(), $total, $loadCallback)
     {
         $this->elements = $elements;
         $this->total = $total;
