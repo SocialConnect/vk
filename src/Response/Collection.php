@@ -6,7 +6,7 @@
 
 namespace SocialConnect\Vk\Response;
 
-class Collection implements \Countable
+class Collection implements \Iterator, \Countable
 {
     /**
      * @var integer
@@ -49,6 +49,8 @@ class Collection implements \Countable
     }
 
     /**
+     * Set position to first element and return this element
+     *
      * @return mixed
      */
     public function first()
@@ -86,5 +88,21 @@ class Collection implements \Countable
     public function current()
     {
         return current($this->elements);
+    }
+
+    /**
+     * Set position to first element
+     */
+    public function rewind()
+    {
+        reset($this->elements);
+    }
+
+    /**
+     * @return bool|void
+     */
+    public function valid()
+    {
+        return $this->current();
     }
 }
