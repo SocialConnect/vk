@@ -62,7 +62,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $client = $this->getClient();
 
         $result = $client->isGroupMembers(1, array($this->getTestUserId(), 1));
-        $this->assertEquals(0, $result[0]->member);
+        $this->assertEquals(1, $result[0]->member);
         $this->assertEquals(1, $result[1]->member);
 
         $result = $client->isGroupMembers(10639516, array($this->getTestUserId(), 1));
