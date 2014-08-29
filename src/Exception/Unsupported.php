@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: ovr
- * Date: 8/29/14
- * Time: 9:12 PM
+ * SocialConnect project
+ * @author: Patsura Dmitry @ovr <talk@dmtry.me>
  */
 
 namespace SocialConnect\Vk\Exception;

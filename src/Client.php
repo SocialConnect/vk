@@ -86,7 +86,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
 
         if ($response) {
             if ($response->isServerError()) {
-                throw new Exception('Server error');
+                throw new Exception\ServerError($response);
             }
 
             $body = $response->getBody(true);
@@ -98,10 +98,10 @@ class Client extends \SocialConnect\Common\ClientAbstract
                 } else {
                     if (isset($json->error)) {
                         throw new Exception($json->error->error_msg, $json->error->error_code);
-                    }
+                    }   
                 }
             } else {
-                throw new Exception('Error 2');
+                throw new Exception\ServerError($response);
             }
         }
 
