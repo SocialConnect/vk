@@ -8,6 +8,8 @@ namespace SocialConnect\Vk;
 
 class Client extends \SocialConnect\Common\ClientAbstract
 {
+    use Constants;
+
     /**
      * @var array
      */
@@ -110,13 +112,20 @@ class Client extends \SocialConnect\Common\ClientAbstract
      * @link http://vk.com/dev/users.get
      *
      * @param $id
-     * @return bool
+     * @param array $fields
+     * @return bool|object
      */
-    public function getUser($id)
+    public function getUser($id, array $fields = array('id', 'first_name', 'last_name'))
     {
-        $result = $this->request('method/getProfiles', array(
+        $parameters = array(
             'user_id' => $id
-        ));
+        );
+
+        if ($fields != $this->USER_DEFAULT_FIELDS) {
+            $parameters['fields'] = $fields;
+        }
+
+        $result = $this->request('method/getProfiles', $parameters);
 
         if ($result) {
             $result = $result[0];
