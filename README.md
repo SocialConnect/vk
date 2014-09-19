@@ -16,7 +16,7 @@ Add requirement to your `composer.json`:
 ```json
 {
     "require": {
-        "socialconnect/vk-sdk": "dev-master"
+        "socialconnect/vk-sdk": "~0.2"
     }
 }
 ```
@@ -26,6 +26,19 @@ Run the composer installer:
 ```bash
 php composer.phar install
 ```
+
+How to use
+----------
+
+First you need to create service:
+
+```
+$appId = 123456; // Your Vk application id
+$appSecret = 'secret'; // Your Vk application secret
+
+$vkService = new \SocialConnect\Vk\Client($appId, $appSecret);
+```
+
 
 License
 -------
