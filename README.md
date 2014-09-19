@@ -16,7 +16,7 @@ Add requirement to your `composer.json`:
 ```json
 {
     "require": {
-        "socialconnect/vk-sdk": "dev-master"
+        "socialconnect/vk-sdk": "~0.2"
     }
 }
 ```
