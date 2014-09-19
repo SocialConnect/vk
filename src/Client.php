@@ -6,8 +6,11 @@
 
 namespace SocialConnect\Vk;
 
+use SocialConnect\Common\HttpClient;
+
 class Client extends \SocialConnect\Common\ClientAbstract
 {
+    use HttpClient;
     use Constants;
 
     /**
@@ -16,17 +19,6 @@ class Client extends \SocialConnect\Common\ClientAbstract
     protected $baseParameters = array(
         'v' => 5.24
     );
-
-    /**
-     * @param string|integer $appId
-     * @param string $appSecret
-     */
-    public function __construct($appId, $appSecret)
-    {
-        parent::__construct($appId, $appSecret);
-
-        $this->httpClient = new \Guzzle\Http\Client('https://api.vk.com/');
-    }
 
     /**
      * @param string $accessToken
