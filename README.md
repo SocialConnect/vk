@@ -32,11 +32,13 @@ How to use
 
 First you need to create service:
 
-```
-$appId = 123456; // Your Vk application id
-$appSecret = 'secret'; // Your Vk application secret
+```php
+// Your Vk Application Settings
+$appId = 123456;
+$appSecret = 'secret';
 
 $vkService = new \SocialConnect\Vk\Client($appId, $appSecret);
+$vkService->setHttpClient(new \SocialConnect\Common\Http\Client\Curl());
 ```
 
 
