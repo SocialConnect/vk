@@ -27,6 +27,19 @@ Run the composer installer:
 php composer.phar install
 ```
 
+How to use
+----------
+
+First you need to create service:
+
+```
+$appId = 123456; // Your Vk application id
+$appSecret = 'secret'; // Your Vk application secret
+
+$vkService = new \SocialConnect\Vk\Client($appId, $appSecret);
+```
+
+
 License
 -------
 
