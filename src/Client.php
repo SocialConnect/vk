@@ -72,9 +72,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
         }
 
         $parameters = array_merge($this->baseParameters, $parameters);
-
-        $request = $this->httpClient->get($uri.'?'.http_build_query($parameters));
-        $response = $request->send();
+        $response = $this->httpClient->request('https://api.vk.com/' . $uri.'?'.http_build_query($parameters));
 
         if ($response) {
             if ($response->isServerError()) {
