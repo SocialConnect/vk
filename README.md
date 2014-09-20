@@ -41,6 +41,29 @@ $vkService = new \SocialConnect\Vk\Client($appId, $appSecret);
 $vkService->setHttpClient(new \SocialConnect\Common\Http\Client\Curl());
 ```
 
+## Get user with specified $id:
+
+```php
+$user = $vkService->getUser(1);
+var_dump($user);
+```
+
+## Get users with specified array $ids:
+
+```php
+$users = $vkService->getUsers([1, 2]);
+var_dump($users);
+```
+
+## Custom methods
+
+```php
+$parameters = [];
+$result = $vkService->request('method/CustomMethod', $parameters);
+if ($result) {
+    var_dump($result;)
+}
+```
 
 License
 -------
