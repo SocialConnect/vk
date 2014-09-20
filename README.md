@@ -55,7 +55,7 @@ $users = $vkService->getUsers([1, 2]);
 var_dump($users);
 ```
 
-## Custom methods
+## Customs methods
 
 ```php
 $parameters = [];
