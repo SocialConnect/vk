@@ -11,7 +11,7 @@ Library for work with VK API.
 Installation
 ------------
 
-Add requirement to your `composer.json`:
+Add a requirement to your `composer.json`:
 
 ```json
 {
