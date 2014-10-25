@@ -38,6 +38,17 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('int', $result->id);
         $this->assertInternalType('string', $result->firstname);
         $this->assertInternalType('string', $result->lastname);
+
+        $client = $this->getClient();
+        $result = $client->getUser($this->getTestUserId(), array('sex'));
+
+        $this->assertInstanceOf('SocialConnect\Vk\Entity\User', $result);
+
+        $this->assertInternalType('int', $result->id);
+        $this->assertInternalType('string', $result->firstname);
+        $this->assertInternalType('string', $result->lastname);
+        $this->assertInternalType('int', $result->sex);
+
     }
 
     public function testGetUserWrongId()
