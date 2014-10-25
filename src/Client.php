@@ -143,14 +143,14 @@ class Client extends \SocialConnect\Common\ClientAbstract
         }
 
         $parameters = array(
-            'uids' => $ids
+            'user_ids' => $ids
         );
 
         if ($fields != $this->USER_DEFAULT_FIELDS) {
             $parameters['fields'] = $fields;
         }
 
-        $apiResult = $this->request('method/getProfiles', $parameters);
+        $apiResult = $this->request('method/users.get', $parameters);
 
         return $this->hydrateCollection($apiResult, $this->getHydrator(new Entity\User()));
     }
