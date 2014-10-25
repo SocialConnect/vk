@@ -130,18 +130,26 @@ class Client extends \SocialConnect\Common\ClientAbstract
      * @link http://vk.com/dev/users.get
      *
      * @param array $ids
+     * @param array $fields
      * @return array|bool
      * @throws Exception
+     * @throws Exception\ServerError
      */
-    public function getUsers(array $ids)
+    public function getUsers(array $ids, array $fields = array('id', 'first_name', 'last_name'))
     {
         if (count($ids) == 0) {
             return false;
         }
 
-        $apiResult = $this->request('method/getProfiles', array(
+        $parameters = array(
             'uids' => $ids
-        ));
+        );
+
+        if ($fields != $this->USER_DEFAULT_FIELDS) {
+            $parameters['fields'] = $fields;
+        }
+
+        $apiResult = $this->request('method/getProfiles', $parameters);
 
         return $this->hydrateCollection($apiResult, $this->getHydrator(new Entity\User()));
     }
