@@ -61,7 +61,7 @@ var_dump($users);
 $parameters = [];
 $result = $vkService->request('method/CustomMethod', $parameters);
 if ($result) {
-    var_dump($result;)
+    var_dump($result);
 }
 ```
 
