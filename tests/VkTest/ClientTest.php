@@ -55,7 +55,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $client = $this->getClient();
         $result = $client->getUsers([$this->getTestUserId(), 1, 176058131, 256611307, 98093405]);
-        
+
         $this->assertInstanceOf('SocialConnect\Vk\Response\Collection', $result);
     }
 
