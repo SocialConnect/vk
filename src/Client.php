@@ -44,6 +44,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
             'hidden' => 'hidden',
             'deactivated' => 'deactivated',
             'owner_id' => 'ownerId',
+            'sex' => 'sex',
             //Audio
             'artist' => 'artist',
             'title' => 'title',
