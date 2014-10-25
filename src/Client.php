@@ -13,11 +13,13 @@ class Client extends \SocialConnect\Common\ClientAbstract
     use HttpClient;
     use Constants;
 
+    const VK_API_VERSION = 5.24;
+
     /**
      * @var array
      */
     protected $baseParameters = array(
-        'v' => 5.24
+        'v' => self::VK_API_VERSION
     );
 
     /**
