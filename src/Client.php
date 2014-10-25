@@ -134,7 +134,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
      *
      * @param array $ids
      * @param array $fields
-     * @return array|bool
+     * @return Response\Collection|bool
      * @throws Exception
      * @throws Exception\ServerError
      */
@@ -152,9 +152,17 @@ class Client extends \SocialConnect\Common\ClientAbstract
             $parameters['fields'] = $fields;
         }
 
-        $apiResult = $this->request('method/users.get', $parameters);
+        $result = $this->request('method/users.get', $parameters);
 
-        return $this->hydrateCollection($apiResult, $this->getHydrator(new Entity\User()));
+        if ($result) {
+            return new Response\Collection(
+                $this->hydrateCollection($result, $this->getHydrator(new Entity\User())),
+                count($result),
+                function() {}
+            );
+        }
+
+        return false;
     }
 
     /**
