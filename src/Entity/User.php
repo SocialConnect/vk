@@ -32,6 +32,16 @@ class User extends \SocialConnect\Common\Entity\User
     /**
      * @var string|null
      */
+    public $country;
+
+    /**
+     * @var string|null
+     */
+    public $city;
+
+    /**
+     * @var string|null
+     */
     public $timezone;
 
     /**
@@ -43,7 +53,7 @@ class User extends \SocialConnect\Common\Entity\User
      * @var array|null
      */
     public $occupation;
-    
+
     /**
      * @return mixed
      * @throws \SocialConnect\Vk\Exception\Unsupported
