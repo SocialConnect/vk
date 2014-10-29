@@ -30,6 +30,21 @@ class User extends \SocialConnect\Common\Entity\User
     protected $online;
 
     /**
+     * @var string|null
+     */
+    public $timezone;
+
+    /**
+     * @var string|null
+     */
+    public $bdate;
+
+    /**
+     * @var array|null
+     */
+    public $occupation;
+    
+    /**
      * @return mixed
      * @throws \SocialConnect\Vk\Exception\Unsupported
      */
