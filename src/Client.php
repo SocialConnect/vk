@@ -16,6 +16,36 @@ class Client extends \SocialConnect\Common\ClientAbstract
     const VK_API_VERSION = 5.24;
 
     /**
+     * @var Entity\User
+     */
+    protected $entityUser;
+
+    /**
+     * @var Entity\Audio
+     */
+    protected $entityAudio;
+
+    /**
+     * @var Entity\Friend
+     */
+    protected $entityFriend;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __construct($appId, $appSecret, $accessToken = null)
+    {
+        parent::__construct($appId, $appSecret, $accessToken);
+
+        /**
+         * Init base entities
+         */
+        $this->entityUser = new Entity\User();
+        $this->entityAudio = new Entity\Audio();
+        $this->entityFriend = new Entity\Friend();
+    }
+
+    /**
      * @var array
      */
     protected $baseParameters = array(
@@ -299,5 +329,53 @@ class Client extends \SocialConnect\Common\ClientAbstract
         }
 
         return false;
+    }
+
+    /**
+     * @return Entity\User
+     */
+    public function getEntityUser()
+    {
+        return $this->entityUser;
+    }
+
+    /**
+     * @param Entity\User $entityUser
+     */
+    public function setEntityUser(Entity\User $entityUser)
+    {
+        $this->entityUser = $entityUser;
+    }
+
+    /**
+     * @return Entity\Audio
+     */
+    public function getEntityAudio()
+    {
+        return $this->entityAudio;
+    }
+
+    /**
+     * @param Entity\Audio $entityAudio
+     */
+    public function setEntityAudio(Entity\Audio $entityAudio)
+    {
+        $this->entityAudio = $entityAudio;
+    }
+
+    /**
+     * @return Entity\Friend
+     */
+    public function getEntityFriend()
+    {
+        return $this->entityFriend;
+    }
+
+    /**
+     * @param Entity\Friend $entityFriend
+     */
+    public function setEntityFriend(Entity\Friend $entityFriend)
+    {
+        $this->entityFriend = $entityFriend;
     }
 }
