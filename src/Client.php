@@ -159,7 +159,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
         if ($result) {
             $result = $result[0];
 
-            return $this->getHydrator(new Entity\User())->hydrate($result);
+            return $this->getHydrator(clone $this->entityUser)->hydrate($result);
         }
 
         return false;
@@ -192,7 +192,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
 
         if ($result) {
             return new Response\Collection(
-                $this->hydrateCollection($result, $this->getHydrator(new Entity\User())),
+                $this->hydrateCollection($result, $this->getHydrator(clone $this->entityUser)),
                 count($result),
                 function() {}
             );
@@ -232,7 +232,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
 
         if ($result) {
             return new Response\Collection(
-                $this->hydrateCollection($result->items, $this->getHydrator(new Entity\Friend())),
+                $this->hydrateCollection($result->items, $this->getHydrator(clone $this->entityFriend)),
                 $result->count,
                 function() {}
             );
@@ -322,7 +322,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
 
         if ($result) {
             return new Response\Collection(
-                $this->hydrateCollection($result->items, $this->getHydrator(new Entity\Audio())),
+                $this->hydrateCollection($result->items, $this->getHydrator(clone $this->entityAudio)),
                 $result->count,
                 function() {}
             );
