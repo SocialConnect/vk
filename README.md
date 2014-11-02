@@ -65,6 +65,24 @@ if ($result) {
 }
 ```
 
+## Custom entities
+
+```php
+class MyUserEntitiy extends \SocialConnect\Vk\Entity\User {
+    public function myOwnMethod()
+    {
+        //do something
+    }
+}
+
+$vkService->getEntityUser(new MyUserEntitiy());
+$user = $vkService->getUser(1);
+
+if ($user) {
+    $user->myOwnMethod();
+}
+```
+
 License
 -------
 
