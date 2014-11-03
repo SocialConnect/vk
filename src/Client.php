@@ -16,6 +16,36 @@ class Client extends \SocialConnect\Common\ClientAbstract
     const VK_API_VERSION = 5.24;
 
     /**
+     * @var Entity\User
+     */
+    protected $entityUser;
+
+    /**
+     * @var Entity\Audio
+     */
+    protected $entityAudio;
+
+    /**
+     * @var Entity\Friend
+     */
+    protected $entityFriend;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __construct($appId, $appSecret, $accessToken = null)
+    {
+        parent::__construct($appId, $appSecret, $accessToken);
+
+        /**
+         * Init base entities
+         */
+        $this->entityUser = new Entity\User();
+        $this->entityAudio = new Entity\Audio();
+        $this->entityFriend = new Entity\Friend();
+    }
+
+    /**
      * @var array
      */
     protected $baseParameters = array(
@@ -129,7 +159,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
         if ($result) {
             $result = $result[0];
 
-            return $this->getHydrator(new Entity\User())->hydrate($result);
+            return $this->getHydrator(clone $this->entityUser)->hydrate($result);
         }
 
         return false;
@@ -162,7 +192,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
 
         if ($result) {
             return new Response\Collection(
-                $this->hydrateCollection($result, $this->getHydrator(new Entity\User())),
+                $this->hydrateCollection($result, $this->getHydrator(clone $this->entityUser)),
                 count($result),
                 function() {}
             );
@@ -202,7 +232,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
 
         if ($result) {
             return new Response\Collection(
-                $this->hydrateCollection($result->items, $this->getHydrator(new Entity\Friend())),
+                $this->hydrateCollection($result->items, $this->getHydrator(clone $this->entityFriend)),
                 $result->count,
                 function() {}
             );
@@ -292,12 +322,60 @@ class Client extends \SocialConnect\Common\ClientAbstract
 
         if ($result) {
             return new Response\Collection(
-                $this->hydrateCollection($result->items, $this->getHydrator(new Entity\Audio())),
+                $this->hydrateCollection($result->items, $this->getHydrator(clone $this->entityAudio)),
                 $result->count,
                 function() {}
             );
         }
 
         return false;
+    }
+
+    /**
+     * @return Entity\User
+     */
+    public function getEntityUser()
+    {
+        return $this->entityUser;
+    }
+
+    /**
+     * @param Entity\User $entityUser
+     */
+    public function setEntityUser(Entity\User $entityUser)
+    {
+        $this->entityUser = $entityUser;
+    }
+
+    /**
+     * @return Entity\Audio
+     */
+    public function getEntityAudio()
+    {
+        return $this->entityAudio;
+    }
+
+    /**
+     * @param Entity\Audio $entityAudio
+     */
+    public function setEntityAudio(Entity\Audio $entityAudio)
+    {
+        $this->entityAudio = $entityAudio;
+    }
+
+    /**
+     * @return Entity\Friend
+     */
+    public function getEntityFriend()
+    {
+        return $this->entityFriend;
+    }
+
+    /**
+     * @param Entity\Friend $entityFriend
+     */
+    public function setEntityFriend(Entity\Friend $entityFriend)
+    {
+        $this->entityFriend = $entityFriend;
     }
 }
