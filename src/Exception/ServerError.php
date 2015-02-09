@@ -19,6 +19,6 @@ class ServerError extends Exception
     {
         $this->response = $response;
 
-        parent::__construct('Server Error', $code = 0, $previous);
+        parent::__construct('Server Error', $code = 0, null);
     }
 }
