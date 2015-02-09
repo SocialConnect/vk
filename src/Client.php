@@ -90,9 +90,9 @@ class Client extends \SocialConnect\Common\ClientAbstract
     }
 
     /**
-     * Request social server api
+     * Request social server API
      *
-     * @param $uri
+     * @param string $uri
      * @param array $parameters
      * @param bool $accessToken
      * @return bool
