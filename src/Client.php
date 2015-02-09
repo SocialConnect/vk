@@ -118,7 +118,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
                 throw new Exception\ServerError($response);
             }
 
-            $body = $response->getBody(true);
+            $body = $response->getBody();
             if ($body) {
                 $json = json_decode($body);
 
