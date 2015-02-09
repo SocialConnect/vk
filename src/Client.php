@@ -205,7 +205,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
      * @link http://vk.com/dev/friends.get
      *
      * @param null $id
-     * @return array|bool
+     * @return array|boolean
      * @throws Exception
      */
     public function getFriendsList($id = null)
@@ -243,7 +243,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
 
     /**
      * @param $apiResult
-     * @param $hydrator
+     * @param \SocialConnect\Common\Hydrator\CloneObjectMap $hydrator
      * @return array|bool
      */
     protected function hydrateCollection($apiResult, $hydrator)
