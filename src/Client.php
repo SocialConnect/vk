@@ -12,7 +12,10 @@ class Client extends \SocialConnect\Common\ClientAbstract
 {
     use HttpClient;
     use Constants;
-
+    
+    /**
+     * @link http://vk.com/dev/versions
+     */ 
     const VK_API_VERSION = 5.24;
 
     /**
