@@ -263,7 +263,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
             return $result;
         }
 
-        return false;
+        return array();
     }
 
     /**

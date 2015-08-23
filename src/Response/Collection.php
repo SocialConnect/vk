@@ -6,6 +6,8 @@
 
 namespace SocialConnect\Vk\Response;
 
+use Closure;
+
 class Collection implements \Iterator, \Countable
 {
     /**
@@ -13,19 +15,22 @@ class Collection implements \Iterator, \Countable
      */
     protected $total;
 
+    /**
+     * @var Closure
+     */
     protected $loadCallback;
 
     /**
      * @var array
      */
-    protected $elements = array();
+    protected $elements;
 
     /**
      * @param array $elements
-     * @param $total
-     * @param $loadCallback
+     * @param integer $total
+     * @param Closure $loadCallback
      */
-    public function __construct(array $elements = array(), $total, $loadCallback)
+    public function __construct(array $elements, $total, Closure $loadCallback)
     {
         $this->elements = $elements;
         $this->total = $total;
