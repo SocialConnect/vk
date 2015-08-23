@@ -26,10 +26,10 @@
     </filter>
 
     <php>
-      <var name="applicationId" value="4500322"/>
-      <var name="applicationSecret" value="" />
-      <var name="testUserId" value="103061163" />
-      <var name="testUserAccessToken" value="" />
+      <env name="applicationId" value="4500322"/>
+      <!--<env name="applicationSecret" value="" />-->
+      <env name="testUserId" value="103061163" />
+      <!--<env name="testUserAccessToken" value="" />-->
     </php>
 
     <logging>

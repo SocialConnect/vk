@@ -12,16 +12,16 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function getTestUserId()
     {
-        return $GLOBALS['testUserId'];
+        return getenv('testUserId');
     }
 
     public function getClient()
     {
-        $client = new \SocialConnect\Vk\Client(intval($GLOBALS['applicationId']), $GLOBALS['applicationSecret']);
+        $client = new \SocialConnect\Vk\Client(intval(getenv('applicationId')), getenv('applicationSecret'));
         $client->setHttpClient(new \SocialConnect\Common\Http\Client\Curl());
-        $client->setAccessToken($GLOBALS['testUserAccessToken']);
+        $client->setAccessToken(getenv('testUserAccessToken'));
 
-        if (strlen($GLOBALS['testUserAccessToken']) < 10) {
+        if (strlen(getenv('testUserAccessToken')) < 10) {
             $this->skipAccessTokenTest = true;
         }
 
@@ -117,5 +117,17 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $result = $client->getAudio($this->getTestUserId());
         $this->assertInstanceOf('SocialConnect\Vk\Response\Collection', $result);
+    }
+
+    public function testGetStatusByUserId()
+    {
+        $client = $this->getClient();
+
+        if ($this->skipAccessTokenTest) {
+            $this->markTestSkipped('Need AccessToken');
+        }
+
+        $result = $client->getStatus($this->getTestUserId());
+        $this->assertInternalType('string', $result);
     }
 }
