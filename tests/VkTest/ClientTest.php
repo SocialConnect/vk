@@ -130,4 +130,19 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $result = $client->getStatus($this->getTestUserId());
         $this->assertInternalType('string', $result);
     }
+
+    public function testGetStatusBySelf()
+    {
+        $client = $this->getClient();
+
+        if ($this->skipAccessTokenTest) {
+            $this->markTestSkipped('Need AccessToken');
+        }
+
+        /**
+         * Get self status
+         */
+        $result = $client->getStatus();
+        $this->assertInternalType('string', $result);
+    }
 }
