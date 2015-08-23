@@ -12,6 +12,11 @@ php:
 install:
  - composer --prefer-dist install
 
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
+    
 script:
   - ./vendor/bin/phpcs --standard=PSR2 --report=emacs --extensions=php --warning-severity=0 src/ tests/
   - ./vendor/bin/paratest -f --phpunit ./vendor/bin/phpunit --coverage-clover=coverage.clover
