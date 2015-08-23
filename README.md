@@ -1,10 +1,10 @@
 # <img src="https://socialconnect.github.io/assets/icons/vk.png" width="27"> ВКонтакте SDK
 
 [![Latest Stable Version](https://poser.pugx.org/SocialConnect/vk-sdk/v/stable.svg)](https://packagist.org/packages/SocialConnect/vk-sdk)
-[![Build Status](https://travis-ci.org/SocialConnect/vk-sdk.svg?branch=master)](https://travis-ci.org/SocialConnect/vk-sdk)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/SocialConnect/vk-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/SocialConnect/vk-sdk/?branch=master)
-[![Coverage Status](https://img.shields.io/coveralls/SocialConnect/vk-sdk.svg)](https://coveralls.io/r/SocialConnect/vk-sdk?branch=master)
-[![License](https://poser.pugx.org/SocialConnect/vk-sdk/license.svg)](https://packagist.org/packages/SocialConnect/vk-sdk)
+[![Build Status](https://travis-ci.org/SocialConnect/vk.svg?branch=master)](https://travis-ci.org/SocialConnect/vk)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/SocialConnect/vk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/SocialConnect/vk/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/SocialConnect/vk/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/SocialConnect/vk/?branch=master)
+[![License](https://poser.pugx.org/SocialConnect/vk/license.svg)](https://packagist.org/packages/SocialConnect/vk)
 
 Library for work with VK API.
 
