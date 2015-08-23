@@ -6,16 +6,20 @@
 
 namespace SocialConnect\Vk\Exception;
 
+use SocialConnect\Common\Http\Response;
 use SocialConnect\Vk\Exception;
 
 class ServerError extends Exception
 {
+    /**
+     * @var Response
+     */
     public $response;
 
     /**
-     * @param string $response
+     * @param Response $response
      */
-    public function __construct($response)
+    public function __construct(Response $response)
     {
         $this->response = $response;
 
