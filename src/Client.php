@@ -98,7 +98,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
      * @param string $uri
      * @param array $parameters
      * @param bool $accessToken
-     * @return bool
+     * @return mixed
      * @throws Exception
      */
     public function request($uri, array $parameters = array(), $accessToken = false)
@@ -143,7 +143,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
     /**
      * @link http://vk.com/dev/users.get
      *
-     * @param $id
+     * @param integer $id
      * @param array $fields
      * @return bool|object
      */
