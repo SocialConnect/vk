@@ -297,19 +297,30 @@ class Client extends \SocialConnect\Common\ClientAbstract
     /**
      * @link http://vk.com/dev/status.get
      *
-     * @param null $id
-     * @return bool
+     * @param integer|null $id
+     * @return bool|string
      * @throws Exception
      */
     public function getStatus($id = null)
     {
         if ($id) {
-            return $this->request('method/status.get', array(
-                'user_id' => $id
-            ));
+            $result = $this->request(
+                'method/status.get',
+                array(
+                    'user_id' => $id
+                ),
+                true
+            );
+        } else {
+            $result = $this->request('method/status.get', array(), true);
         }
 
-        return $this->request('method/status.get', array(), true);
+
+        if ($result) {
+            return $result->text;
+        }
+
+        return false;
     }
 
     /**
