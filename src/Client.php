@@ -114,7 +114,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
             }
         }
 
-        $response = $this->httpClient->request('https://api.vk.com/' . $uri.'?'.http_build_query($parameters));
+        $response = $this->httpClient->request('https://api.vk.com/' . $uri, $parameters);
 
         if ($response) {
             if ($response->isServerError()) {

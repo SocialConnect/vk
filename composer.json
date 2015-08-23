@@ -10,7 +10,7 @@
     "require": {
         "php": ">=5.4",
         "ext-json": "*",
-        "socialconnect/common": "~0.2.7"
+        "socialconnect/common": "~0.5"
     },
     "require-dev": {
         "satooshi/php-coveralls": "dev-master",
