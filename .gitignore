@@ -1,4 +1,5 @@
 /vendor/
 composer.lock
+coverage.clover
 phpunit.xml
 .idea
