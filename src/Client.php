@@ -303,7 +303,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
      */
     public function getStatus($id = null)
     {
-        if ($id) {
+        if ($id !== null) {
             $result = $this->request(
                 'method/status.get',
                 array(
