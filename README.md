@@ -16,7 +16,7 @@ Add a requirement to your `composer.json`:
 ```json
 {
     "require": {
-        "socialconnect/vk": "~0.3"
+        "socialconnect/vk": "~0.4"
     }
 }
 ```
