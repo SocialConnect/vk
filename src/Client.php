@@ -197,7 +197,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
             return new Response\Collection(
                 $this->hydrateCollection($result, $this->getHydrator(clone $this->entityUser)),
                 count($result),
-                function () {
+                function() {
                 }
             );
         }
@@ -238,7 +238,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
             return new Response\Collection(
                 $this->hydrateCollection($result->items, $this->getHydrator(clone $this->entityFriend)),
                 $result->count,
-                function () {
+                function() {
                 }
             );
         }
@@ -274,7 +274,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
      */
     public function isGroupMember($groupId, $id)
     {
-        return (boolean)$this->request('method/groups.isMember', array(
+        return (boolean) $this->request('method/groups.isMember', array(
             'group_id' => $groupId,
             'user_id' => $id
         ));
@@ -340,7 +340,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
             return new Response\Collection(
                 $this->hydrateCollection($result->items, $this->getHydrator(clone $this->entityAudio)),
                 $result->count,
-                function () {
+                function() {
                 }
             );
         }
