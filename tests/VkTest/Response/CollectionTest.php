@@ -13,21 +13,22 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     public function testIterator()
     {
         $collection = new Collection(array(
-            (object) array(
+            (object)array(
                 'id' => '1'
             ),
-            (object) array(
+            (object)array(
                 'id' => '2'
             ),
-            (object) array(
+            (object)array(
                 'id' => '3'
             ),
-        ), 3, function() {});
+        ), 3, function () {
+        });
 
         $this->assertEquals(3, $collection->count());
 
         $count = 0;
-        foreach($collection as $key => $value) {
+        foreach ($collection as $key => $value) {
             $count++;
         }
         $this->assertEquals(3, $count);
