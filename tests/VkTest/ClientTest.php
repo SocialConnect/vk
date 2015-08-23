@@ -64,7 +64,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException('SocialConnect\Vk\Exception', 'Invalid user id');
 
         $client = $this->getClient();
-        $result = $client->getUser(-1);
+        $client->getUser(-1);
     }
 
     public function testIsGroupMemberSuccess()
