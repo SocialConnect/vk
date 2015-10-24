@@ -267,6 +267,32 @@ class Client extends \SocialConnect\Common\ClientAbstract
     }
 
     /**
+     * @link https://vk.com/dev/groups.get
+     *
+     * @param $groupId
+     * @return bool|object
+     * @throws Exception
+     * @throws Exception\ServerError
+     */
+    public function getGroup($groupId)
+    {
+        $result = $this->request(
+            'method/groups.getById',
+            [
+                'group_id' => $groupId
+            ]
+        );
+
+        if ($result) {
+            $result = $result[0];
+
+            return $result;
+        }
+
+        return false;
+    }
+    
+    /**
      * @param integer|string $groupId
      * @param integer|string $id
      * @return bool
