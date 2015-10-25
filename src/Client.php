@@ -293,6 +293,37 @@ class Client extends \SocialConnect\Common\ClientAbstract
     }
     
     /**
+     * @link http://www.youtube.com/watch?v=jp9pfvneKf4
+     *
+     * @param array $groupIds
+     * @param array $fields
+     * @return bool|object[]
+     * @throws Exception
+     * @throws Exception\ServerError
+     */
+    public function getGroups(array $groupIds, array $fields = array())
+    {
+        $parameters = [
+            'group_ids' => $groupIds
+        ];
+
+        if (!empty($fields)) {
+            $parameters['fields'] = $fields;
+        }
+
+        $result = $this->request(
+            'method/groups.getById',
+            $parameters
+        );
+
+        if ($result) {
+            return $result;
+        }
+
+        return false;
+    }
+    
+    /**
      * @param integer|string $groupId
      * @param integer|string $id
      * @return bool
