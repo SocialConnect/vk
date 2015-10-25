@@ -16,7 +16,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
     /**
      * @link http://vk.com/dev/versions
      */
-    const VK_API_VERSION = 5.24;
+    const VK_API_VERSION = 5.37;
 
     /**
      * @var Entity\User
@@ -115,7 +115,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
         }
 
         $response = $this->httpClient->request('https://api.vk.com/' . $uri, $parameters);
-
+var_dump($response);
         if ($response) {
             if ($response->isServerError()) {
                 throw new Exception\ServerError($response);
@@ -158,7 +158,6 @@ class Client extends \SocialConnect\Common\ClientAbstract
         }
 
         $result = $this->request('method/getProfiles', $parameters);
-
         if ($result) {
             $result = $result[0];
 
