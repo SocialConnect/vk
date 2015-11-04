@@ -10,7 +10,7 @@
     "require": {
         "php": ">=5.4",
         "ext-json": "*",
-        "socialconnect/common": "~0.5"
+        "socialconnect/common": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",
