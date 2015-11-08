@@ -405,6 +405,31 @@ var_dump($response);
     }
 
     /**
+     * @param boolean $all
+     * @param integer|null $count
+     * @return mixed
+     * @throws Exception
+     * @throws Exception\ServerError
+     */
+    public function getCountries($all = null, $count = null)
+    {
+        $parameters = [];
+
+        if ($all) {
+            $parameters['need_all'] = $all;
+            /**
+             * @todo Vk bug
+             */
+            $parameters['count'] = 500;
+        } elseif ($count) {
+            $parameters['count'] = $count;
+        }
+
+        $result = $this->request('method/database.getCountries', $parameters);
+        return $result->items;
+    }
+    
+    /**
      * @return Entity\User
      */
     public function getEntityUser()
