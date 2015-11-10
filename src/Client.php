@@ -115,7 +115,6 @@ class Client extends \SocialConnect\Common\ClientAbstract
         }
 
         $response = $this->httpClient->request('https://api.vk.com/' . $uri, $parameters);
-var_dump($response);
         if ($response) {
             if ($response->isServerError()) {
                 throw new Exception\ServerError($response);
