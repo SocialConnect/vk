@@ -19,6 +19,11 @@ class Client extends \SocialConnect\Common\ClientAbstract
     const VK_API_VERSION = 5.37;
 
     /**
+     * @var string
+     */
+    protected $baseUrl = 'https://api.vk.com/';
+
+    /**
      * @var Entity\User
      */
     protected $entityUser;
@@ -114,7 +119,7 @@ class Client extends \SocialConnect\Common\ClientAbstract
             }
         }
 
-        $response = $this->httpClient->request('https://api.vk.com/' . $uri, $parameters);
+        $response = $this->httpClient->request($this->baseUrl . $uri, $parameters);
         if ($response) {
             if ($response->isServerError()) {
                 throw new Exception\ServerError($response);
@@ -474,5 +479,21 @@ class Client extends \SocialConnect\Common\ClientAbstract
     public function setEntityFriend(Entity\Friend $entityFriend)
     {
         $this->entityFriend = $entityFriend;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBaseUrl()
+    {
+        return $this->baseUrl;
+    }
+
+    /**
+     * @param string $baseUrl
+     */
+    public function setBaseUrl($baseUrl)
+    {
+        $this->baseUrl = $baseUrl;
     }
 }
